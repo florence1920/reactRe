@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react';
 
 export default function Products() {
-  const [checked, setChecked] = useState(false);
   const [products, setProducts] = useState([]);
-  const handleChange = () => setChecked(prev => !prev)
+  const [checked, setChecked] = useState(false);
+  const handleChange = () => setChecked((prev) => !prev);
 
   useEffect(() => {
     fetch(`data/${checked ? 'sale_' : ''}products.json`)
@@ -19,8 +19,13 @@ export default function Products() {
 
   return (
     <>
-      <input id="checkbox" type="checkbox" value={checked} onChange={handleChange}/>
-      <label htmlFor='checkbox'>Show Only 🛩 Sale</label>
+      <input
+        id='checkbox'
+        type='checkbox'
+        value={checked}
+        onChange={handleChange}
+      />
+      <label htmlFor='checkbox'>Show Only 🔥 Sale</label>
       <ul>
         {products.map((product) => (
           <li key={product.id}>
@@ -31,7 +36,6 @@ export default function Products() {
           </li>
         ))}
       </ul>
-      {/* <button onClick={() => setCount((prev) => prev + 1)}>{count}</button> */}
     </>
   );
 }
